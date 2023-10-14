@@ -1,25 +1,26 @@
 #include <iostream>
-#include <string.h>
-#define _CRT_SECURE_NO_WARNINGS
+#include <cstring>
 
 using namespace std;
 
 
-int main(int argc, char *argv[])
+int main()
 {
-    char maintString[] = "Hello, I have 3 apples and 2 bananas, but I also like to 3at p1zza without any numbers.";
+    int mainStringLength = 1024;
+    char *pMaintString = new char[mainStringLength];
     char separators[] = " ;,.?!\t\n";
+    cout << "Enter your text example: "; cin.get(pMaintString,mainStringLength);
 
-    cout << "Original text: " << maintString << endl;
-    size_t stringLength = strlen(maintString); 
+    cout << "\nOriginal text: " << pMaintString << endl;
+    size_t stringLength = strlen(pMaintString);
 
     char *pMainCopy1 = new char[stringLength + 1];
 
-    strcpy(pMainCopy1, maintString);
+    strcpy(pMainCopy1, pMaintString);
 
     int wordsWithoutNumbersCount = 0;
 
-    for (char *pToken = strtok(pMainCopy1, separators);pToken != NULL; pToken = strtok(NULL,separators) )
+    for (char *pToken = strtok(pMainCopy1, separators);pToken != nullptr; pToken = strtok(nullptr,separators) )
     {
         bool containingOnlyLetters = true;
         for (int i = 0; pToken[i] != 0; i++)
@@ -38,7 +39,8 @@ int main(int argc, char *argv[])
     }
     
     cout << "Number of words without numbers is: " << wordsWithoutNumbersCount<< endl;
-    
+
+    delete []pMaintString;
     delete []pMainCopy1;
 
     return 0;
