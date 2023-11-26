@@ -1,9 +1,6 @@
 #include <iostream>
 #include <ctime>
-#include "NUMBER_OF_ELEMENTS.h"
-#include "PRINT_ARRAY.h"
-#include "COUT_POSITIVE_AND_SUM.h"
-#include "MOVE_NUMBERS.h"
+#include "Header.h"
 
 using namespace std;
 
