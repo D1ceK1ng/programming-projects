@@ -1,47 +1,50 @@
 #include <iostream>
-#include <cstring>
+#include <string.h>
 
 using namespace std;
 
 
 int main()
 {
-    int mainStringLength = 1024;
-    char *pMaintString = new char[mainStringLength];
-    char separators[] = " ;,.?!\t\n";
-    cout << "Enter your text example: "; cin.get(pMaintString,mainStringLength);
+  // Initializing string arrays and separators
+  int mainStringLength = 1024;
+  char *pMainString = new char[mainStringLength];
+  char separators[] = " ;,.?!\t\n";
 
-    cout << "\nOriginal text: " << pMaintString << endl;
-    size_t stringLength = strlen(pMaintString);
+  // Getting text from the user
+  cout << "Enter your text example: ";
+  cin.get(pMainString, mainStringLength);
 
-    char *pMainCopy1 = new char[stringLength + 1];
+  size_t stringLength = strlen(pMainString);
 
-    strcpy(pMainCopy1, pMaintString);
+  // Creating a copy to work with
+  char *pMainCopy1 = new char[stringLength + 1];
+  strcpy(pMainCopy1, pMainString);
 
-    int wordsWithoutNumbersCount = 0;
+  // Count words without numbers
+  int wordsWithoutNumbersCount = 0;
 
-    for (char *pToken = strtok(pMainCopy1, separators);pToken != nullptr; pToken = strtok(nullptr,separators) )
+  for (char *pToken = strtok(pMainCopy1, separators); pToken != nullptr; pToken = strtok(nullptr, separators))
+  {
+    bool containingOnlyLetters = true; // Check for words without digits
+    for (int i = 0; pToken[i] != 0; i++)
     {
-        bool containingOnlyLetters = true;
-        for (int i = 0; pToken[i] != 0; i++)
-        {
-            if(isdigit(pToken[i]))
-            {
-                containingOnlyLetters = false;
-            }
-        }
-
-        if(containingOnlyLetters)
-        {
-            wordsWithoutNumbersCount++;
-        }
-        
+      if (isdigit(pToken[i]))
+      {
+        containingOnlyLetters = false;
+      }
     }
-    
-    cout << "Number of words without numbers is: " << wordsWithoutNumbersCount<< endl;
 
-    delete []pMaintString;
-    delete []pMainCopy1;
+    if (containingOnlyLetters)
+    {
+      wordsWithoutNumbersCount++;// Increasing number count
+    }
+  }
 
-    return 0;
+  cout << "Number of words without numbers is: " << wordsWithoutNumbersCount << endl;
+
+  delete[]pMainString;
+  delete[]pMainCopy1;
+
+  return 0;
 }

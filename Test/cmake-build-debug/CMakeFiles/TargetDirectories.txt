@@ -1,0 +1,3 @@
+/home/dice/Projects_Cpp/Test/cmake-build-debug/CMakeFiles/Test.dir
+/home/dice/Projects_Cpp/Test/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dice/Projects_Cpp/Test/cmake-build-debug/CMakeFiles/rebuild_cache.dir

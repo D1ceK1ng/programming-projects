@@ -4,7 +4,7 @@ using namespace std;
 struct AtsSubscriber {
     char PIB[1024];
     char livingPlace[1024];
-    int phoneNumber;
+    char phoneNumber[15];
     int atsNumber;
 };
 
@@ -24,7 +24,7 @@ int main() {
     cin.ignore();
     cin.getline(pAtsSubscriber[i].livingPlace, sizeof(pAtsSubscriber[i].livingPlace));
 
-    cout << "Enter phone number of  " << i + 1 << " subscriber: ";
+    cout << "Enter full phone number of  " << i + 1 << " subscriber: ";
     cin >> pAtsSubscriber[i].phoneNumber;
 
     cout << "Enter ATS number of " << i + 1 << " subscriber: ";
@@ -54,8 +54,8 @@ int main() {
 
   cout << "All ATS subscriber by their number:\n";
   for (int i = 0; i < atsSubscriberCount; i++) {
-    cout << i + 1 << ")\t" << "PIB: " << pAtsSubscriber[i].PIB << "\t" << "ATS number: " << pAtsSubscriber[i].atsNumber
-         << "\t Phone number : " << "+380" << pAtsSubscriber[i].phoneNumber << "\n";
+    cout << i + 1 << ")\t" << "PIB: " << pAtsSubscriber[i].PIB << ";\t  ATS number: " << pAtsSubscriber[i].atsNumber
+         << ";\t Phone number : " << "+" << pAtsSubscriber[i].phoneNumber << "\n";
   }
 
   delete[] pAtsSubscriber;
